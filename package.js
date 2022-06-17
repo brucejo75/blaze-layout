@@ -1,13 +1,13 @@
 Package.describe({
-  summary: 'Layout Manager for Blaze (works well with FlowRouter)',
-  version: '2.3.2',
+  summary: 'Layout Manager for Blaze (works with FlowRouter)',
+  version: '2.3.3',
   git: 'https://github.com/merisforks/blaze-layout',
   name: "merisfork:blaze-layout"
 });
 
 Package.onUse(function (api) {
   configure(api);
-  api.export(['BlazeLayout']);
+  api.export(['BlazeLayout'], 'client');
 });
 
 Package.onTest(function(api) {
@@ -21,12 +21,12 @@ Package.onTest(function(api) {
 
 function configure(api) {
   api.versionsFrom('1.0');
+  api.use('ecmascript');
   api.use('blaze');
   api.use('templating');
   api.use('reactive-dict');
   api.use('underscore');
   api.use('tracker');
 
-  api.addFiles('lib/client/namespace.js', 'client');
-  api.addFiles('lib/client/layout.js', 'client');
+  api.mainModule('lib/client/layout.js', 'client');
 }
